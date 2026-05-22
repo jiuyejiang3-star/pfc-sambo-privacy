@@ -1,68 +1,109 @@
+---
+title: FitForce プライバシーポリシー
+layout: default
+---
+
 # FitForce プライバシーポリシー
 
-**最終更新日: 2026年5月19日**
+**最終更新日: 2026年5月22日**
 
-FitForce（以下「本アプリ」）は、ユーザーのプライバシーを最大限尊重します。本ポリシーは、本アプリが扱うデータの種類、利用目的、第三者への提供の有無について説明します。
+FitForce（以下「本アプリ」）は、ユーザーのプライバシーを尊重します。本ポリシーは、本アプリが扱うデータの種類、利用目的、端末内保存、外部サービスへの送信、第三者処理、保持、削除、同意撤回について説明します。
 
 ## 1. 取得・保存するデータ
 
-本アプリは、以下のデータを **すべて利用者の端末内** に保存します。サーバーへの送信・保管は行いません。
+本アプリは、以下のデータを iOS 標準の SwiftData / UserDefaults を用いて **利用者の端末内** に保存します。当社が運営するサーバーへの保管は行いません。
 
-- 食事記録（写真・食品名・カロリー・PFC値）
-- 筋トレ記録（種目・セット数・重量・回数）
-- 体重・身長・性別・年齢などのプロフィール
+- 食事記録（食品名、カロリー、PFC値、食事写真）
+- 筋トレ記録（種目、セット数、重量、回数）
+- 体重、身長、性別、年齢、目標体重などのプロフィール
 - 有酸素運動・スポーツ活動記録
-- ユーザー設定（テンプレート・お気に入りなど）
+- ユーザー設定（テンプレート、お気に入り、AI送信同意状態など）
 
-これらのデータは iOS 標準の SwiftData / UserDefaults を用いて端末内にローカル保存されます。アプリをアンインストールするとすべて削除されます。
+これらの端末内データは、アプリをアンインストールすると端末から削除されます。
 
-## 2. 外部サービスへのデータ送信
+## 2. ヘルスケアデータ
 
-本アプリは、以下の機能のために Google 社の **Gemini API** にデータを送信します。
+本アプリは、ユーザーの明示的な許可がある場合に限り、Appleヘルスケアから以下のデータを読み取ります。
 
-| 機能 | 送信されるデータ |
-|---|---|
-| 食事写真の栄養解析 | 撮影/選択された食事画像 |
-| AIメニュー生成 | 体重・身長・年齢・性別・トレーニング条件 |
-| AI評価・週次レビュー | 食事記録・筋トレ記録・体重推移の集計値 |
+- 体重
+- 歩数
+- アクティブカロリー
 
-- 送信されるデータには、氏名・メールアドレス・電話番号などの **個人を特定する情報は一切含まれません**
-- 通信は HTTPS により暗号化されます
-- Gemini API の利用は Google 社の[プライバシーポリシー](https://policies.google.com/privacy)に従います
+また、ユーザーがアプリ内で記録した体重をAppleヘルスケアへ書き込む場合があります。これらのデータは、体重グラフ、当日の消費カロリー表示、食事・運動管理のために使用します。ヘルスケアへのアクセス許可は、iOSの「設定」またはヘルスケアアプリからいつでも変更できます。
 
-## 3. 取得しないデータ
+## 3. Google Gemini APIへのデータ送信
 
-本アプリは以下のデータを **一切取得しません**。
+本アプリは、AI解析・AI提案機能を提供するために、Google社の **Gemini API** にデータを送信する場合があります。AI機能を利用する前に、アプリ内でAIへのデータ送信について確認します。ユーザーが同意しない場合、AI機能は利用できません。
 
-- 氏名・メールアドレス・電話番号
+| 機能 | Gemini APIへ送信される可能性があるデータ | 利用目的 |
+|---|---|---|
+| 食事写真AI解析 | 撮影または選択された食事画像 | 食品名、量、カロリー、PFC値の推定 |
+| 足りない栄養の補助提案 | 食事画像、残りカロリー、残りPFC目標 | 追加候補食品の提案 |
+| AIメニュー生成 | 体重、身長、年齢、性別、目標、トレーニング条件 | ワークアウトメニューの生成 |
+| AI食事レビュー | 食事記録、推定栄養値、目標カロリー、目標PFC | 食事内容の一般的なレビュー |
+| AI筋トレ評価・週次レビュー | 筋トレ記録、食事記録、体重推移、プロフィール由来の情報 | 運動・食事・体重推移の一般的なレビュー |
+
+送信されるデータには、氏名、メールアドレス、電話番号、連絡先、位置情報、広告識別子（IDFA）は含めません。ただし、食事写真、健康・フィットネス記録、プロフィール由来の情報は、ユーザーの健康管理に関する機微な情報を含む場合があります。
+
+Gemini APIへの通信はHTTPSで暗号化されます。本アプリは、Gemini APIへ送信したデータを当社サーバーに保存しません。
+
+## 4. Googleによる第三者処理・保持
+
+Gemini APIに送信されたプロンプト、画像、追加文脈、生成結果などは、Google社により処理されます。Google社は、Gemini APIの安全性とポリシー遵守のため、不正利用対策・ポリシー執行・法令対応の目的で、プロンプト、文脈情報、生成出力を一定期間保持する場合があります。
+
+Google社のGemini APIドキュメントでは、不正利用対策のためにこれらのデータを **55日間保持** する場合があること、フラグされた内容は権限を持つGoogle担当者が確認する場合があること、また不正利用対策のためにログされたデータは、ポリシー執行および違反防止の目的で使用され、ポリシー執行用のモデルを除きAI/MLモデルのトレーニングまたはファインチューニングには使用されないことが説明されています。
+
+また、GoogleのGemini APIログ共有機能でプロジェクト所有者が任意にログ共有へオプトインした場合、APIリクエスト・レスポンス等がGoogle製品や機械学習技術の改善・評価・トレーニングに使用される場合があります。FitForceでは、ユーザーの健康・食事・運動データを含むGemini APIログを、モデル改善目的でGoogleへ任意共有しない運用とします。
+
+Google社による処理、保持、削除、法令対応の詳細は、GoogleのポリシーおよびGemini API関連ドキュメントをご確認ください。
+
+- [Google プライバシーポリシー](https://policies.google.com/privacy)
+- [Gemini API Additional Terms of Service](https://ai.google.dev/gemini-api/terms)
+- [Gemini API Abuse monitoring](https://ai.google.dev/gemini-api/docs/usage-policies#how-we-handle-data)
+- [Gemini API Data Logging and Sharing](https://ai.google.dev/gemini-api/docs/logs-policy)
+
+## 5. AI送信への同意と撤回
+
+AI機能を初めて利用する前に、本アプリはGoogle Gemini APIへ送信されるデータの概要を表示し、ユーザーの同意を確認します。同意後は、プロフィール画面の「法務・プライバシー」セクションから「AIへのデータ送信を許可」をオフにすることで、将来のAI送信を撤回できます。
+
+同意を撤回すると、食事写真AI解析、足りない栄養の補助提案、AI食事レビュー、AI筋トレ評価、週次AIレビューなど、Gemini APIへの送信を伴う機能は利用前に再確認されます。撤回は将来の送信を停止するものであり、撤回前にGemini APIへ送信済みのデータについては、Google社の保持・削除ポリシーに従って処理されます。
+
+## 6. カメラ・フォトライブラリへのアクセス
+
+本アプリは、食事写真の記録、食事写真AI解析、バーコードスキャンのために、ユーザーの許可に基づいてカメラおよびフォトライブラリへアクセスします。アクセス許可はiOSの「設定」からいつでも変更できます。撮影または選択された食事写真は、端末内保存およびAI解析のために使用される場合があります。
+
+## 7. 第三者への提供
+
+本アプリは、AI解析・AI提案の処理目的でGoogle社のGemini APIへデータを送信する場合を除き、ユーザーのデータを第三者へ販売、共有、提供しません。広告目的のトラッキング、第三者広告ネットワーク、外部アナリティクスSDKは使用していません。
+
+## 8. 取得しないデータ
+
+本アプリは以下のデータを取得しません。
+
+- 氏名
+- メールアドレス
+- 電話番号
 - 位置情報
 - 連絡先
 - カレンダー
-- 端末識別子（IDFA等）
-- 利用状況の分析データ（アナリティクス）
-- 広告識別子・トラッキング情報
+- 広告識別子（IDFA）
+- 第三者広告目的のトラッキング情報
 
-## 4. カメラ・フォトライブラリへのアクセス
+## 9. データの削除
 
-食事写真の記録のために、ユーザーの許可に基づいてカメラおよびフォトライブラリにアクセスします。許可は iOS 設定からいつでも変更可能です。撮影/選択された写真は、栄養解析のためにのみ Gemini API へ送信され、本アプリのサーバーには保存されません。
+端末内に保存されたデータは、アプリをアンインストールすることで削除されます。アプリ内の記録は、各画面の削除機能またはバックアップ復元機能により変更・削除できる場合があります。
 
-## 5. 第三者への提供
+Gemini APIへ送信済みのデータは、本アプリまたは当社サーバーには保存されませんが、Google社が上記の不正利用対策・ポリシー執行・法令対応のために一定期間保持する場合があります。Google社側の保持・削除はGoogleのポリシーに従います。
 
-本アプリは、ユーザーのデータを Google 社の Gemini API（解析処理目的）以外の第三者に提供することはありません。
-
-## 6. データの削除
-
-本アプリをアンインストールすることで、端末内に保存されたすべてのデータが完全に削除されます。
-
-## 7. 子供のプライバシー
+## 10. 子供のプライバシー
 
 本アプリは13歳未満の児童を対象としていません。13歳未満の児童の個人情報を意図的に収集することはありません。
 
-## 8. ポリシーの変更
+## 11. ポリシーの変更
 
-本ポリシーは予告なく変更される場合があります。重要な変更がある場合は、本アプリの更新時に通知します。
+本ポリシーは、機能追加、法令・プラットフォーム要件、外部サービスの仕様変更に応じて更新される場合があります。重要な変更がある場合は、本アプリの更新時またはアプリ内表示により通知します。
 
-## 9. お問い合わせ
+## 12. お問い合わせ
 
 本ポリシーまたは本アプリに関するお問い合わせは、以下までご連絡ください。
 
@@ -72,50 +113,106 @@ FitForce（以下「本アプリ」）は、ユーザーのプライバシーを
 
 # Privacy Policy (English)
 
-**Last updated: May 19, 2026**
+**Last updated: May 22, 2026**
 
-FitForce (the "App") respects your privacy. This policy explains what data the App handles, how it is used, and whether it is shared with third parties.
+FitForce (the "App") respects your privacy. This policy explains what data the App handles, how it is used, what is stored locally, what may be sent to external services, third-party processing, retention, deletion, and withdrawal of consent.
 
 ## 1. Data Stored Locally
 
-All of the following data is stored **only on your device**. It is never uploaded to our servers.
+The App stores the following data **on your device** using iOS SwiftData / UserDefaults. We do not store this data on servers operated by us.
 
-- Meal records (photos, food names, calories, PFC values)
+- Meal records (food names, calories, PFC values, meal photos)
 - Workout records (exercises, sets, weight, reps)
-- Profile (weight, height, sex, age)
+- Profile data such as weight, height, sex, age, and target weight
 - Cardio / sports activity records
-- App settings
+- App settings such as templates, favorites, and AI data sharing consent status
 
-Uninstalling the App permanently deletes all data.
+Locally stored data is removed from your device when you uninstall the App.
 
-## 2. Data Sent to External Services
+## 2. Health Data
 
-The App sends data to Google's **Gemini API** for meal photo analysis, AI menu generation, and AI evaluation/weekly review. **No personally identifiable information** (name, email, phone) is sent. All communication is encrypted via HTTPS.
+With your explicit permission, the App may read the following data from Apple Health:
 
-## 3. Data NOT Collected
+- Body weight
+- Step count
+- Active energy burned
 
-Name, email, phone, location, contacts, calendar, device identifiers, usage analytics, advertising/tracking identifiers — all not collected.
+The App may also write body weight records that you enter in the App to Apple Health. These data are used for weight charts, active calorie display, and meal/workout management. You can change Health permissions at any time in iOS Settings or the Health app.
 
-## 4. Camera & Photo Library Access
+## 3. Data Sent to Google Gemini API
 
-The App requests camera and photo library access for meal photo recording only. Photos are sent to the Gemini API for nutrition analysis and are not stored on our servers.
+The App may send data to Google's **Gemini API** to provide AI analysis and suggestion features. Before using AI features, the App displays a notice about AI data sharing. If you do not consent, AI features cannot be used.
 
-## 5. Third-Party Sharing
+| Feature | Data that may be sent to Gemini API | Purpose |
+|---|---|---|
+| Meal photo AI analysis | Selected or captured meal images | Estimating food names, amounts, calories, and PFC values |
+| Nutrition complement suggestions | Meal image, remaining calorie target, remaining PFC targets | Suggesting additional foods |
+| AI workout menu generation | Weight, height, age, sex, goals, training preferences | Generating workout menus |
+| AI meal review | Meal records, estimated nutrition values, calorie target, PFC targets | General review of meal records |
+| AI workout / weekly review | Workout records, meal records, weight trends, profile-derived information | General review of workout, meal, and weight trends |
 
-We do not share data with any third party other than the Gemini API for processing.
+We do not intentionally include your name, email address, phone number, contacts, location, or advertising identifier (IDFA) in data sent to Gemini API. However, meal photos, health/fitness records, and profile-derived information may include sensitive information about your health and fitness management.
 
-## 6. Data Deletion
+Communication with Gemini API is encrypted via HTTPS. We do not store data sent to Gemini API on our own servers.
 
-Uninstalling the App permanently deletes all locally stored data.
+## 4. Third-Party Processing and Retention by Google
 
-## 7. Children's Privacy
+Prompts, images, contextual information, and generated outputs sent to Gemini API are processed by Google. Google may retain prompts, contextual information, and generated outputs for abuse monitoring, policy enforcement, safety, security, and legal or regulatory purposes.
 
-The App is not directed at children under 13.
+Google's Gemini API documentation states that such data may be retained for **55 days** for abuse monitoring, that flagged content may be reviewed by authorized Google personnel, and that data logged for abuse monitoring is used solely for policy enforcement and preventing policy violations and is not used to train or fine-tune AI/ML models other than those specifically used for policy enforcement.
 
-## 8. Changes to This Policy
+If a project owner opts in to Gemini API log sharing, API requests and responses may be used by Google to improve, evaluate, or train Google products, services, and machine learning technologies. FitForce does not opt in to sharing Gemini API logs containing users' health, meal, or workout data for model improvement.
 
-This policy may be updated without notice. Significant changes will be communicated through App updates.
+For details about Google's processing, retention, deletion, and legal obligations, please refer to Google's policies and Gemini API documentation:
 
-## 9. Contact
+- [Google Privacy Policy](https://policies.google.com/privacy)
+- [Gemini API Additional Terms of Service](https://ai.google.dev/gemini-api/terms)
+- [Gemini API Abuse monitoring](https://ai.google.dev/gemini-api/docs/usage-policies#how-we-handle-data)
+- [Gemini API Data Logging and Sharing](https://ai.google.dev/gemini-api/docs/logs-policy)
 
-For questions: jiuyejiang3@gmail.com
+## 5. Consent and Withdrawal for AI Data Sending
+
+Before you use an AI feature for the first time, the App shows a summary of the data that may be sent to Google Gemini API and asks for your consent. After consenting, you can withdraw future AI data sending by turning off "Allow AI data sending" in the "Legal & Privacy" section of the Profile screen.
+
+Withdrawing consent stops future sending unless you confirm again before using an AI feature. It does not delete data that was already sent to Gemini API before withdrawal; such data is handled according to Google's retention and deletion policies.
+
+## 6. Camera and Photo Library Access
+
+The App requests camera and photo library access for meal photo recording, meal photo AI analysis, and barcode scanning. You can change access permissions at any time in iOS Settings. Selected or captured meal photos may be used for local storage and AI analysis.
+
+## 7. Third-Party Sharing
+
+We do not sell, share, or provide user data to third parties except for sending data to Google's Gemini API for AI analysis and suggestion processing. We do not use advertising tracking, third-party ad networks, or external analytics SDKs.
+
+## 8. Data Not Collected
+
+The App does not collect:
+
+- Name
+- Email address
+- Phone number
+- Location
+- Contacts
+- Calendar
+- Advertising identifier (IDFA)
+- Tracking information for third-party advertising
+
+## 9. Data Deletion
+
+Locally stored data is deleted when you uninstall the App. In-app records may also be modified or deleted through available App features.
+
+Data already sent to Gemini API is not stored by us or on our servers, but Google may retain it for abuse monitoring, policy enforcement, safety, security, and legal or regulatory purposes as described above. Google's retention and deletion policies apply to Google's processing.
+
+## 10. Children's Privacy
+
+The App is not directed at children under 13. We do not knowingly collect personal information from children under 13.
+
+## 11. Changes to This Policy
+
+This policy may be updated due to feature changes, legal or platform requirements, or changes in external service practices. Significant changes will be communicated through App updates or in-app notices.
+
+## 12. Contact
+
+For questions about this policy or the App:
+
+- Email: jiuyejiang3@gmail.com
